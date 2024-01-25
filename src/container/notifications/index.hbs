@@ -1,0 +1,19 @@
+<div class="page page__background--gray">
+	<header class="account-page__header">
+		{{> back-button}}
+
+		<div class="account-page__title">Notifications</div>
+	</header>
+
+	<main class="notifications__section">
+		{{#with data}}
+		{{#each notifications}}
+
+		{{> notification text=this.text time=this.date type=this.type }}
+
+		{{/each}}
+		{{/with}}
+	</main>
+
+
+</div>

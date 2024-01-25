@@ -2,13 +2,38 @@
 const express = require('express')
 const router = express.Router()
 
-// Підключіть файли роутів
-const test = require('./test')
-// Підключіть інші файли роутів, якщо є
+router.get('/', function (req, res) {
+  res.render('index', {
+    name: 'index',
 
-// Об'єднайте файли роутів за потреби
-router.use('/', test)
-// Використовуйте інші файли роутів, якщо є
+    component: [''],
 
-// Експортуємо глобальний роутер
+    title: 'Index page',
+
+    data: {},
+  })
+})
+
+// ==================================
+
+router.get('/logout', function (req, res) {
+  res.render('logout', {
+    name: 'logout',
+
+    component: [''],
+
+    title: 'Logout page',
+
+    data: {},
+  })
+})
+
+
+
+const auth = require('./auth')
+router.use('/', auth)
+
+const account = require('./account')
+router.use('/', account)
+
 module.exports = router

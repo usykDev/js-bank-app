@@ -1,0 +1,27 @@
+<div class="page__wallet-background">
+	<div class="page">
+
+		<header class="wallet-page__header">
+			{{> button-settings}}
+
+			<div class="wallet-page__title">Main wallet</div>
+
+			{{> button-notifications}}
+		</header>
+
+		<div class="wallet-page__main">
+			<div class="wallet-page__balance">100.20</div>
+			<div class="wallet-page__operations">
+				{{> button-receive}}
+
+				{{> button-send}}
+			</div>
+		</div>
+
+		<div class="wallet-page__transactions-list">
+			<div>{{data.userEmail}}</div>
+		</div>
+
+
+	</div>
+</div>

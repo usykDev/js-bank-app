@@ -1,0 +1,30 @@
+<div class="page">
+	<header>
+		{{> back-button}}
+	</header>
+
+	<form class="page__section">
+		<h1 class="page__header">
+			<div class="page__title">Confirm account</div>
+			<div class="page__subtitle">Write the code you received</div>
+		</h1>
+		<div class="form">
+			<div class="form__item">
+				{{> field action="signupConfirmForm.change" label="Code" type="number" placeholder="Your code"
+				name="code"}}
+				<span name="code" class="form__error">Mistake</span>
+			</div>
+		</div>
+
+		<span class="link__prefix">Lost your code? <a href="/signup-confirm" class="link" id="renew">
+				Send it again
+			</a></span>
+
+
+		<button onclick="signupConfirmForm.submit()" class="button button--disabled" type="button">Confirm</button>
+
+		<span class="alert alert--disabled ">
+			Required fields are missing
+		</span>
+	</form>
+</div>

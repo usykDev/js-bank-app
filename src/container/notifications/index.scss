@@ -1,0 +1,13 @@
+@use '../../style' as s;
+
+@use '../../style/form.scss' as form;
+
+@use '../../style/account.scss' as a;
+
+
+
+.notifications__section {
+	display: flex;
+	flex-direction: column;
+	gap: s.space(3);
+}

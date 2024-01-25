@@ -1,0 +1,73 @@
+<div class="page">
+	<header class="account-page__header">
+		{{> back-button}}
+
+		<div class="account-page__title">Settings</div>
+	</header>
+
+	<form class="page__section">
+
+		<div class="form ">
+			<div class="settings__title">Change email</div>
+			<div class="form__item">
+				{{> field action="changeEmailForm.change" label="Email" type="email" placeholder="Your e-mail"
+				name="email"}}
+				<span name="email" class="form__error">Mistake</span>
+			</div>
+
+			<div class="form__item">
+				{{> field-password action="changeEmailForm.change" label="Old password" type="password"
+				placeholder="Your password" name="password"
+				}}
+				<span name="password" class="form__error">Mistake</span>
+			</div>
+
+			<button onclick="changeEmailForm.submit()" class="button button--white button--disabled" type="button">Save
+				email</button>
+
+			<span class="alert alert--disabled ">
+				Required fields are missing
+			</span>
+
+
+
+		</div>
+
+
+		{{> divider}}
+
+		<div class="form form__change-password">
+			<div class="settings__title">Change password</div>
+
+			<div class="form__item">
+				{{> field-password action="changePasswordForm.change" label="Old password" type="password"
+				placeholder="Your password" name="passwordOld"
+				}}
+				<span name="passwordOld" class="form__error">Mistake</span>
+			</div>
+
+			<div class="form__item">
+				{{> field-password action="changePasswordForm.change" label="New password" type="password"
+				placeholder="Your password" name="passwordNew"
+				}}
+				<span name="passwordNew" class="form__error">Mistake</span>
+			</div>
+
+			<button onclick="changePasswordForm.submit()" class="button--password button--disabled" type="button">Save
+				password</button>
+		</div>
+
+		<span class="alert alert--password alert--disabled">
+			Required fields are missing
+		</span>
+
+
+		{{> divider}}
+
+
+		<a class="button button--red" type="button" href="/logout">Log
+			out</a>
+
+
+	</form>
+</div>

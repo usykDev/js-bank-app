@@ -1,0 +1,35 @@
+<div class="page">
+	<header>
+		{{> back-button}}
+	</header>
+
+	<form class="page__section">
+		<h1 class="page__header">
+			<div class="page__title">Sign in</div>
+			<div class="page__subtitle">Select login method</div>
+		</h1>
+		<div class="form">
+			<div class="form__item">
+				{{> field action="signupForm.change" label="Email" type="email" placeholder="Your e-mail"
+				name="email"}}
+				<span name="email" class="form__error">Mistake</span>
+			</div>
+
+			<div class="form__item">
+				{{> field-password action="signupForm.change" label="Password" type="password"
+				placeholder="Your password" name="password"
+				}}
+				<span name="password" class="form__error">Mistake</span>
+			</div>
+		</div>
+
+		<span class="link__prefix">Forgot your password? <a href="/recovery" class="link">Restore</a></span>
+
+		<button onclick="signupForm.submit()" class="button button--disabled" type="button">Continue</button>
+
+
+		<span class="alert alert--disabled ">
+			Required fields are missing
+		</span>
+	</form>
+</div>

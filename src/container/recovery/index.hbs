@@ -1,0 +1,27 @@
+<div class="page">
+	<header>
+		{{> back-button}}
+	</header>
+
+	<form class="page__section">
+		<h1 class="page__header">
+			<div class="page__title">Recover password</div>
+			<div class="page__subtitle">Choose a recovery method</div>
+		</h1>
+		<div class="form">
+			<div class="form__item">
+				{{> field action="recoveryForm.change" label="Email" type="email" placeholder="Your e-mail"
+				name="email"}}
+				<span name="email" class="form__error">Mistake</span>
+			</div>
+
+		</div>
+
+		<button onclick="recoveryForm.submit()" class="button button--disabled" type="button">Send code</button>
+
+
+		<span class="alert alert--disabled ">
+			Required fields are missing
+		</span>
+	</form>
+</div>
