@@ -4,18 +4,18 @@
 	display: flex;
 	flex-direction: column;
 	gap: s.space(2);
-	
+	position: relative;
 
 	&__label {
-		font-size: 14px;
+		font-size: 16px;
 		color: s.color(dark);
 	}
 
-	&__input {
+	&__input-num {
 		border: 1px solid s.color(box);
 		background-color: s.color(white);
-
-		padding: s.space(3.5);
+		width: 100%;
+		padding: s.space(3.5) s.space(6);
 		border-radius: 10px;
 
 		font-size: 14px;
@@ -37,3 +37,5 @@
 		}
 	}
 }
+
+

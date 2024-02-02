@@ -4,10 +4,6 @@ class UserNotification {
     this.type = type
     this.date = new Date()
   }
-
-  getData() {
-    return this
-  }
 }
 
 module.exports = {

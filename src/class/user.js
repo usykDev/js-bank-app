@@ -1,14 +1,13 @@
 const { UserNotification } = require('./notification')
-
-// const {
-//   default: UserNotification,
-// } = require('../component/notification')
+const { UserTransaction } = require('./transaction')
 
 class User {
   static #list = []
-  static #listNotifications = []
-
   static #count = 1
+
+  listNotifications = []
+  listTransactions = []
+  balance = 0
 
   constructor({ email, password }) {
     this.id = User.#count++
@@ -16,7 +15,6 @@ class User {
     this.email = String(email).toLocaleLowerCase()
     this.password = String(password)
     this.isConfirm = false
-    this.notifications = User.#listNotifications
   }
 
   static create(data) {
@@ -29,12 +27,57 @@ class User {
     return user
   }
 
-  static createNotification(text, type) {
+  receive(amount) {
+    if (!isNaN(amount)) {
+      this.balance += Number(amount)
+
+      return this.balance
+    }
+  }
+
+  send(amount) {
+    if (!isNaN(amount)) {
+      this.balance -= Number(amount)
+
+      return this.balance
+    }
+  }
+
+  createTransaction(sender, recipient, type, amount) {
+    const transaction = new UserTransaction(
+      sender,
+      recipient,
+      type,
+      amount,
+    )
+
+    this.listTransactions.push(transaction)
+
+    return transaction
+  }
+
+  getTransactionById(transactionId) {
+    const transaction = this.listTransactions.find(
+      (transaction) => transaction.id === transactionId,
+    )
+
+    return transaction || null
+  }
+
+  createNotification(text, type) {
     const notification = new UserNotification(text, type)
 
-    this.#listNotifications.push(notification)
+    this.listNotifications.push(notification)
 
     return notification
+  }
+
+  getNotifications() {
+    return this.listNotifications
+  }
+
+  getTransactions() {
+    return this.listTransactions
   }
 
   static updatePassword(password, passwordNew) {
@@ -48,6 +91,15 @@ class User {
         'User not found with the provided old password.',
       )
     }
+  }
+
+  static changeEmailInTransactions(email, toEmail) {
+    this.#list.forEach((user) => {
+      user.listTransactions.forEach((tx) => {
+        if (tx.recipient === email) tx.recipient = toEmail
+        if (tx.sender === email) tx.sender = toEmail
+      })
+    })
   }
 
   static getByEmail(email) {

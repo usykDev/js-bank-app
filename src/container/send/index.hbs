@@ -1,0 +1,30 @@
+<div class="page">
+	<header class="account-page__header">
+		{{> back-button}}
+
+		<div class="account-page__title">Send</div>
+	</header>
+
+	<form class="page__section">
+		<div class="form ">
+			<div class="form__item">
+				{{> field action="sendForm.change" label="Email" type="email" placeholder="Your e-mail"
+				name="email"}}
+				<span name="email" class="form__error">Mistake</span>
+			</div>
+
+			<div class="form__item">
+				{{> field-num action="sendForm.change" label="Sum"
+				name="amount"
+				}}
+				<span name="amount" class="form__error">Mistake</span>
+			</div>
+
+			<button onclick="sendForm.submit()" class="button button--disabled" type="button">Send</button>
+
+			<span class="alert alert--disabled ">
+				Required fields are missing
+			</span>
+		</div>
+	</form>
+</div>

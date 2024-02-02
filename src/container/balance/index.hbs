@@ -10,7 +10,11 @@
 		</header>
 
 		<div class="wallet-page__main">
-			<div class="wallet-page__balance">100.20</div>
+
+			{{#with data}}
+			<div class="wallet-page__balance">{{balance}}</div>
+			{{/with}}
+
 			<div class="wallet-page__operations">
 				{{> button-receive}}
 
@@ -19,7 +23,13 @@
 		</div>
 
 		<div class="wallet-page__transactions-list">
-			<div>{{data.userEmail}}</div>
+			{{#with data}}
+			{{#each transactions}}
+
+			{{> transaction-notification text=this.text time=this.date type=this.type amount=this.amount }}
+
+			{{/each}}
+			{{/with}}
 		</div>
 
 

@@ -77,10 +77,35 @@ export class Form {
 
       if (isDisabled) {
         el.setAttribute('disabled', 'true')
-
-        // alert.className = 'alert alert--error'
       } else {
         el.removeAttribute('disabled')
+
+        alert.className = 'alert alert--disabled'
+      }
+    }
+
+    const stripeCard = document.getElementById('stripeCard')
+    const coinCard = document.getElementById('coinCard')
+
+    if (stripeCard && coinCard) {
+      const isDisabled = Boolean(disabled)
+      const alert = document.querySelector(`.alert`)
+
+      stripeCard.classList.toggle(
+        'card--disabled',
+        isDisabled,
+      )
+      coinCard.classList.toggle(
+        'card--disabled',
+        isDisabled,
+      )
+
+      if (isDisabled) {
+        stripeCard.setAttribute('disabled', 'true')
+        coinCard.setAttribute('disabled', 'true')
+      } else {
+        stripeCard.removeAttribute('disabled')
+        coinCard.removeAttribute('disabled')
 
         alert.className = 'alert alert--disabled'
       }

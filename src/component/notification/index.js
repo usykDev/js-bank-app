@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (notificationType === 'Warning') {
       cardImageElement.src = '/svg/warning.svg'
     } else {
-      cardImageElement.src = '/path/to/warning-image.jpg'
+      cardImageElement.src = '/svg/warning.svg'
     }
   })
 })

@@ -185,7 +185,7 @@ router.post('/signin', function (req, res) {
 
     const session = Session.create(user)
 
-    const notification = User.createNotification(
+    const notification = user.createNotification(
       'New login',
       'Warning',
     )
@@ -334,6 +334,14 @@ router.post('/change-email', function (req, res) {
     })
   }
 
+  //   const newEmail = User.getByEmail(email)
+
+  //   if (newEmail) {
+  //     return res.status(400).json({
+  //       message: 'User with this email already exists',
+  //     })
+  //   }
+
   try {
     const session = Session.get(token)
 
@@ -351,20 +359,37 @@ router.post('/change-email', function (req, res) {
       })
     }
 
+    if (user.email === email) {
+      return res.status(400).json({
+        message: 'You already have this email',
+      })
+    }
+
+    const newEmail = User.getByEmail(email)
+
+    if (newEmail) {
+      return res.status(400).json({
+        message: 'User with this email already exists',
+      })
+    }
+
     if (password !== user.password) {
       return res.status(400).json({
         message: 'Invalid password',
       })
     }
 
+    const oldEmail = user.email
     user.email = String(email)
 
     const newSession = Session.create(user)
 
-    const notification = User.createNotification(
+    const notification = user.createNotification(
       'New email',
       'Warning',
     )
+
+    User.changeEmailInTransactions(oldEmail, user.email)
 
     return res.status(200).json({
       message: 'Email updated successfully',
@@ -414,7 +439,7 @@ router.post('/change-password', function (req, res) {
 
     const newSession = Session.create(user)
 
-    const notification = User.createNotification(
+    const notification = user.createNotification(
       'New password',
       'Warning',
     )

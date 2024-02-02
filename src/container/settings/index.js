@@ -89,6 +89,7 @@ class ChangePasswordForm extends Form {
     IS_BIG: 'The value must be less than 30 characters',
     PASSWORD_NEW:
       'The password must consist of at least 8 characters, including at least one number, lowercase and uppercase letters',
+    PASSWORD_SAME: 'You have entered the same password',
   }
 
   checkDisabled = () => {
@@ -135,6 +136,15 @@ class ChangePasswordForm extends Form {
     if (name === this.FIELD_NAME.PASSWORD_NEW) {
       if (!REG_EXP_PASSWORD.test(String(value))) {
         return this.FIELD_ERROR.PASSWORD_NEW
+      }
+    }
+
+    if (name === this.FIELD_NAME.PASSWORD_NEW) {
+      if (
+        String(value) ===
+        this.value[this.FIELD_NAME.PASSWORD_OLD]
+      ) {
+        return this.FIELD_ERROR.PASSWORD_SAME
       }
     }
   }

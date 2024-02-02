@@ -1,0 +1,39 @@
+<div class="page page__background--gray">
+	<header class="account-page__header">
+		{{> back-button}}
+
+		<div class="account-page__title">Transaction</div>
+	</header>
+
+
+	<main class="page__section">
+
+		<h1 class="transaction__amount">{{data.transaction.amount}}</h1>
+		<div class="card">
+			<div class="card__info">
+
+				<div class="card__date">
+					<div>Date</div>
+					<div>{{data.transaction.date}}</div>
+				</div>
+
+				{{> divider}}
+
+				<div class="card__address">
+					<div>Address</div>
+					<div>{{data.recipient}}</div>
+				</div>
+
+				{{> divider}}
+
+				<div class="card__type">
+					<div>Type</div>
+					<div class="transaction-type">{{data.transaction.type}}</div>
+				</div>
+
+			</div>
+		</div>
+
+
+	</main>
+</div>

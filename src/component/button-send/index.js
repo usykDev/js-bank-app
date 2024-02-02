@@ -1,7 +1,7 @@
-class BackButton {
-  static back() {
-    return window.history.back()
+class SendButton {
+  static locate() {
+    return location.assign('/send')
   }
 }
 
-window.backButton = BackButton
+window.sendButton = SendButton

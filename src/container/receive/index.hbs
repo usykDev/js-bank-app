@@ -1,0 +1,54 @@
+<div class="page page__background--gray">
+	<header class="account-page__header">
+		{{> back-button}}
+
+		<div class="account-page__title">Receive</div>
+	</header>
+
+	<main class="page__section">
+		<div class="form">
+			<div class="form__item">
+
+				{{> field-num action="paymentSystem.change" label="Receive amount"
+				name="amount"}}
+
+				<span name="amount" class="form__error">Mistake</span>
+			</div>
+		</div>
+
+		{{> divider}}
+
+		<div class="payment--system__cards">
+
+			<div>Payment system</div>
+			<button onclick="paymentSystem.submitStripe()" id="stripeCard" class="card card--disabled">
+				<img src="/svg/stripe.svg" class="card__image" alt="" width="40" height="40">
+				<div class="card__info">
+					<div class="card__title">Stripe</div>
+					<div class="card__types">
+						<img src="/svg/stripe-info.svg">
+					</div>
+				</div>
+			</button>
+
+			<button onclick="paymentSystem.submitCoin()" id="coinCard" class="card card--disabled">
+				<img src="/svg/coin.svg" class="card__image" alt="" width="40" height="40">
+				<div class="card__info">
+					<div class="card__title">Coin</div>
+					<div class="card__types">
+						<img src="/svg/coin-info.svg">
+					</div>
+				</div>
+			</button>
+		</div>
+
+		<span class="alert alert--disabled">
+			Required fields are missing
+		</span>
+
+
+
+	</main>
+
+
+</div>
